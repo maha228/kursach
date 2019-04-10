@@ -1,5 +1,4 @@
-// ConsoleApplication4.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+
 
 #include <iostream>
 #include <string>
@@ -19,8 +18,8 @@ protected:
 	int speed;
 	bool winner;
 public:
-	Ippo() {};//конструктор
-	Ippo(string por, string name, int year) //конструктор с параметрами
+	Ippo() {};
+	Ippo(string por, string name, int year) 
 	{
 		this->por = por;
 		this->name = name;
@@ -28,15 +27,15 @@ public:
 		this->win = 0;
 		views = NULL;
 	}
-	void setspeed(int a)//фун-ия установки скорости
+	void setspeed(int a)
 	{
 		this->speed = a;
 	}
-	int getspeed()//фун-ия возвращения скорости
+	int getspeed()
 	{
 		return this->speed;
 	}
-	void setwin()//счетчик побед
+	void setwin()
 	{
 		this->win++;
 	}
@@ -59,12 +58,12 @@ public:
 		views = /*.push_back*/(obs);
 	}
 
-	string myprint()//фун-ия вывода
+	string myprint()
 	{
 		string res, res1;
 		res = "name: " + this->name + " poroda: " + this->por;
 		char* tmp = new char(10);
-		_itoa_s(this->year, tmp, 4, 10);// 4-кол-во цифр в числе, 10- система счисления
+		_itoa_s(this->year, tmp, 4, 10);
 		res1 = (string)tmp;
 		res += " year: " + res1;
 		_itoa_s(this->win, tmp, 4, 10);
@@ -86,8 +85,6 @@ public:
 	Observer(Ippo *mod, string n) {
 		model = mod;
 		o_name = n;
-		//a = div;
-		// 4. Наблюдатели регистрируются у субъекта
 		model->attach(this);
 	}
 
@@ -97,7 +94,6 @@ public:
 
 	void update()
 	{
-		// 6. "Вытягивание" интересующей информации
 		bool win = getSubject()->getwinner();
 		cout << o_name;
 		if (win)
@@ -114,8 +110,8 @@ protected:
 };
 
 void Ippo::notify() {
-	// 5. Извещение наблюдателей
-/*	for (int i = 0; i < views.size(); i++)*/
+	
+
 		views->update();
 }
 int main()
@@ -213,14 +209,3 @@ int main()
 	}
 	return 0;
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
